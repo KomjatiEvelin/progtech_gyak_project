@@ -1,4 +1,4 @@
 package hu.komjati;
 
-public class Product {
+public abstract class Product {
 }

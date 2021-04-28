@@ -1,4 +1,4 @@
 package hu.komjati;
 
-public class Supplier {
+public abstract class Supplier {
 }

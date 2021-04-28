@@ -1,4 +1,4 @@
 package hu.komjati;
 
-public class Order {
+public abstract class Order {
 }
