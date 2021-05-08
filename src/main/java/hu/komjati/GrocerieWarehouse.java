@@ -13,12 +13,21 @@ public class GrocerieWarehouse implements Warehouse {
 
     @Override
     public boolean addProduct(Product p) {
-        return false;
+        if(p instanceof Grocery){
+            this.products.add((Grocery)p);
+            return true;
+        }
+        else return false;
+
     }
 
     @Override
     public List<Product> getProductsList() {
-        return null;
+        List<Product> temp=new ArrayList<>();
+        for (Grocery p:products) {
+            temp.add(p);
+        }
+        return temp;
     }
 
     @Override

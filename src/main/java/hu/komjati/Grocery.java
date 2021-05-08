@@ -23,22 +23,30 @@ public class Grocery implements Product {
 
     @Override
     public String toString(){
-        return this.ID+":"+this.name+":"+this.price+":"+this.expireDay.toString()+":"+this.type;
+        return "ID:"+this.getID()+" NAME:"+this.getName()+" PRICE:"+this.getPrice()+" TYPE:"+this.getType()+" EXPIRATION DAY:"+this.getExpDay();
+    }
+
+    private String getExpDay() {
+        return  this.expireDay.toString();
+    }
+
+    private GroceryType getType() {
+        return this.type;
     }
 
 
     @Override
     public String getName() {
-        return null;
+        return this.name;
     }
 
     @Override
     public int getPrice() {
-        return 0;
+        return this.price;
     }
 
     @Override
     public UUID getID() {
-        return null;
+        return this.ID;
     }
 }
