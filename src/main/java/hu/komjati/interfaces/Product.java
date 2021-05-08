@@ -1,4 +1,4 @@
-package hu.komjati;
+package hu.komjati.interfaces;
 
 import java.util.UUID;
 

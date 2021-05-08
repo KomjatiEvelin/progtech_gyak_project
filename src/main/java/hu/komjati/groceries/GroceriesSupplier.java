@@ -1,5 +1,10 @@
-package hu.komjati;
+package hu.komjati.groceries;
 
+import hu.komjati.interfaces.Product;
+import hu.komjati.interfaces.Supplier;
+import hu.komjati.interfaces.Warehouse;
+
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -29,7 +34,7 @@ public class GroceriesSupplier implements Supplier {
         for (Product product : prods) {
             w.addProduct(product);
         }
-        System.out.println(this.getName()+" supplied "+prods.size()+" product(s)");
+        System.out.println(this.getName()+" supplied "+prods.size()+" product(s) "+ new Date());
 
     }
 }

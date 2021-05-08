@@ -1,19 +1,27 @@
-package hu.komjati;
+package hu.komjati.groceries;
 
 
+
+import hu.komjati.Order;
+import hu.komjati.groceries.GroceriesSupplier;
+import hu.komjati.groceries.Grocery;
+import hu.komjati.interfaces.Customer;
+import hu.komjati.interfaces.Product;
+import hu.komjati.interfaces.Supplier;
+import hu.komjati.interfaces.Warehouse;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class GrocerieWarehouse implements Warehouse {
+public class GroceryWarehouse implements Warehouse {
 
     private List<Grocery> products;
     private List<Customer> customers;
-    private List<Supplier> suppliers;
+    private List<GroceriesSupplier> suppliers;
     private List<Order> orders;
 
-    public GrocerieWarehouse() {
+    public GroceryWarehouse() {
         this.products = new ArrayList<>();
         this.customers=new ArrayList<>();
         this.suppliers=new ArrayList<>();
@@ -22,7 +30,7 @@ public class GrocerieWarehouse implements Warehouse {
 
     @Override
     public boolean addProduct(Product p) {
-        if(p instanceof Grocery){
+        if(p instanceof Grocery && !products.contains(p)){
             this.products.add((Grocery)p);
             return true;
         }
@@ -52,31 +60,55 @@ public class GrocerieWarehouse implements Warehouse {
 
     @Override
     public boolean addSupplier(Supplier s) {
+        if(s instanceof GroceriesSupplier && !suppliers.contains(s)){
+            this.suppliers.add((GroceriesSupplier)s);
+            return true;
+        }
         return false;
     }
 
     @Override
     public List<Supplier> getAllSuppliers() {
-        return null;
+        List<Supplier> temp=new ArrayList<>();
+        for (GroceriesSupplier s:suppliers) {
+            temp.add(s);
+        }
+        return temp;
     }
 
     @Override
     public Supplier getSupplierByID(UUID ID) {
+        for (GroceriesSupplier s:suppliers) {
+            if(s.getID()==ID){
+                return s;
+            }
+        }
         return null;
     }
 
     @Override
     public boolean addCustomer(Customer c) {
-        return false;
+
+            this.customers.add(c);
+            return true;
     }
 
     @Override
     public List<Customer> getAllCustomers() {
-        return null;
+        List<Customer> temp=new ArrayList<>();
+        for (Customer c:customers) {
+            temp.add(c);
+        }
+        return temp;
     }
 
     @Override
     public Customer getCustomerByID(UUID ID) {
+        for (Customer c:customers) {
+            if(c.getID()==ID){
+                return c;
+            }
+        }
         return null;
     }
 

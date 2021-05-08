@@ -1,5 +1,7 @@
-package hu.komjati;
+package hu.komjati.interfaces;
 
+
+import hu.komjati.Order;
 
 import java.util.List;
 import java.util.UUID;

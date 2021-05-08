@@ -1,34 +1,53 @@
 package hu.komjati;
 
+import hu.komjati.groceries.GroceriesSupplier;
+import hu.komjati.groceries.Grocery;
+import hu.komjati.groceries.GroceryType;
+import hu.komjati.groceries.GroceryWarehouse;
+import hu.komjati.interfaces.Customer;
+import hu.komjati.interfaces.Product;
+import hu.komjati.interfaces.Supplier;
+import hu.komjati.interfaces.Warehouse;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Hello world!
  *
  */
-public class App 
+public class  App
 {
+    static Random rnd=new Random();
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
-        Product p=new Grocery("teszt",10000, new Date(),GroceryType.meat);
-        Product p1=new Grocery("teszt1",2345, new Date(),GroceryType.dairy);
-        Product p2=new Grocery("teszt2",2345, new Date(),GroceryType.grain);
-        Warehouse w=new GrocerieWarehouse();
 
-        List<Product> products=new ArrayList<>();
-        products.add(p);
-        products.add(p1);
-        products.add(p2);
+        Warehouse w=new GroceryWarehouse();
 
         Supplier gs=new GroceriesSupplier("Goods");
-        gs.Supply(products,w);
-        List<Product>prods=w.getProductsList();
+        w.addSupplier(gs);
 
-        for (Product x:prods) {
-            System.out.println(x.toString());
+        List<Product> products=new ArrayList<>();
+        for (int i=0;i<10;i++){
+            products.add(new Grocery("product"+i,i*rnd.nextInt(100),new Date(), GroceryType.fruit));
+        }
+        gs.Supply(products,w);
+
+
+        ListaKiir(w.getProductsList());
+
+        Customer c=new CustomerImpl("Joe","3010 Shell str. 43");
+        w.addCustomer(c);
+
+        System.out.println(w.getCustomerByID(c.getID()).toString());
+
+    }
+
+    static void ListaKiir(List l){
+        for (Object o:l) {
+            System.out.println(o.toString());
         }
     }
 

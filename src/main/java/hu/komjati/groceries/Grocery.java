@@ -1,4 +1,6 @@
-package hu.komjati;
+package hu.komjati.groceries;
+
+import hu.komjati.interfaces.Product;
 
 import java.util.Date;
 import java.util.UUID;
@@ -23,7 +25,7 @@ public class Grocery implements Product {
 
     @Override
     public String toString(){
-        return "ID:"+this.getID()+" NAME:"+this.getName()+" PRICE:"+this.getPrice()+" TYPE:"+this.getType()+" EXPIRATION DAY:"+this.getExpDay();
+        return "ID :"+this.getID()+" NAME:"+this.getName()+" PRICE:"+this.getPrice()+" TYPE:"+this.getType()+" EXPIRE DAY: "+this.getExpDay();
     }
 
     private String getExpDay() {
