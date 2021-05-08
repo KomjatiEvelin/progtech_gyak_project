@@ -20,10 +20,6 @@ public class Grocery implements Product {
         this.type = type;
     }
 
-    @Override
-    public Product getProduct() {
-        return this;
-    }
 
     @Override
     public String toString(){
@@ -31,4 +27,18 @@ public class Grocery implements Product {
     }
 
 
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public int getPrice() {
+        return 0;
+    }
+
+    @Override
+    public UUID getID() {
+        return null;
+    }
 }

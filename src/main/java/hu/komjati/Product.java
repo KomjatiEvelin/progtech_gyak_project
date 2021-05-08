@@ -1,6 +1,11 @@
 package hu.komjati;
 
+import java.util.UUID;
+
 public interface Product {
 
-    Product getProduct();
+    String getName();
+    int getPrice();
+    UUID getID();
+
 }
