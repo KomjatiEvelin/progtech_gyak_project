@@ -1,14 +1,23 @@
 package hu.komjati;
 
+
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class GrocerieWarehouse implements Warehouse {
 
     private List<Grocery> products;
+    private List<Customer> customers;
+    private List<Supplier> suppliers;
+    private List<Order> orders;
 
     public GrocerieWarehouse() {
         this.products = new ArrayList<>();
+        this.customers=new ArrayList<>();
+        this.suppliers=new ArrayList<>();
+        this.orders=new ArrayList<>();
     }
 
     @Override
@@ -30,24 +39,16 @@ public class GrocerieWarehouse implements Warehouse {
     }
 
     @Override
-    public Product getProductByID(int ID) {
+    public Product getProductByID(UUID ID) {
+        for (Grocery p:products) {
+            if(p.getID()==ID){
+                return p;
+            }
+        }
         return null;
+
     }
 
-    @Override
-    public boolean recordNewOrder(Order o) {
-        return false;
-    }
-
-    @Override
-    public List<Order> getAllOrder() {
-        return null;
-    }
-
-    @Override
-    public Order getOrderByID(int ID) {
-        return null;
-    }
 
     @Override
     public boolean addSupplier(Supplier s) {
@@ -60,7 +61,7 @@ public class GrocerieWarehouse implements Warehouse {
     }
 
     @Override
-    public Supplier getSupplierByID(int ID) {
+    public Supplier getSupplierByID(UUID ID) {
         return null;
     }
 
@@ -75,7 +76,22 @@ public class GrocerieWarehouse implements Warehouse {
     }
 
     @Override
-    public Customer getCustomerByID(int ID) {
+    public Customer getCustomerByID(UUID ID) {
+        return null;
+    }
+
+    @Override
+    public boolean recordNewOrder(Order o) {
+        return false;
+    }
+
+    @Override
+    public List<Order> getAllOrder() {
+        return null;
+    }
+
+    @Override
+    public Order getOrderByID(UUID ID) {
         return null;
     }
 }

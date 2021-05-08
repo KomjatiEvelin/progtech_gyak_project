@@ -1,4 +1,4 @@
 package hu.komjati;
 
-public abstract class Customer {
+public class Customer {
 }
