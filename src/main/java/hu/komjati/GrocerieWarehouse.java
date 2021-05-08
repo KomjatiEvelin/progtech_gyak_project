@@ -5,7 +5,7 @@ import java.util.List;
 
 public class GrocerieWarehouse implements Warehouse {
 
-    private List<Groceries> products;
+    private List<Grocery> products;
 
     public GrocerieWarehouse() {
         this.products = new ArrayList<>();
