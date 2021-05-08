@@ -17,8 +17,7 @@ public class GrocerieWarehouse implements Warehouse {
             this.products.add((Grocery)p);
             return true;
         }
-        else return false;
-
+        return false;
     }
 
     @Override

@@ -19,12 +19,13 @@ public class App
 
         w.addProduct(p);
         w.addProduct(p1);
-        w.addProduct(p2);
+        boolean s=w.addProduct(p2);
         List<Product>prods=w.getProductsList();
 
         for (Product x:prods) {
             System.out.println(x.toString());
         }
+        System.out.println(s);
     }
 
 }
