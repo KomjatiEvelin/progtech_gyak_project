@@ -50,7 +50,7 @@ public class CustomerImpl implements Customer {
 
     @Override
     public void orderProducts(List<Product> p, Warehouse w) {
-        w.recordNewOrder(new Order(this, myCart));
+        w.recordNewOrder(new OrderBuilder().setCustomer(this).setCart(myCart).createOrder());
     }
 
 
