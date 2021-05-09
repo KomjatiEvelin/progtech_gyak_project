@@ -1,6 +1,5 @@
 package hu.komjati;
 
-import hu.komjati.groceries.GroceriesSupplier;
 import hu.komjati.groceries.Grocery;
 import hu.komjati.groceries.GroceryType;
 import hu.komjati.groceries.GroceryWarehouse;
@@ -26,7 +25,7 @@ public class  App
 
         Warehouse w=new GroceryWarehouse();
 
-        Supplier gs=new GroceriesSupplier("Goods");
+        Supplier gs=new SupplierImpl("Goods");
         w.addSupplier(gs);
 
         List<Product> products=new ArrayList<>();
@@ -36,12 +35,19 @@ public class  App
         gs.Supply(products,w);
 
 
-        ListaKiir(w.getProductsList());
+        //ListaKiir(w.getProductsList());
 
         Customer c= new CustomerImplBuilder().setName("Joe").setAddress("3010 Shell str. 43").createCustomerImpl();
         w.addCustomer(c);
 
         System.out.println(w.getCustomerByID(c.getID()).toString());
+
+        for (Product p:products) {
+            c.addToCart(p);
+        }
+        c.orderProducts(w);
+
+        ListaKiir(w.getAllOrder());
 
     }
 

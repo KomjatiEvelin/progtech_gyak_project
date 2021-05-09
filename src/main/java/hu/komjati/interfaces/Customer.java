@@ -9,7 +9,7 @@ public interface Customer {
   void setName(String name);
   String getAddress();
   void setAddress(String address);
-  void orderProducts(List<Product> p, Warehouse w);
+  void orderProducts(Warehouse w);
   void addToCart(Product p);
 
 }

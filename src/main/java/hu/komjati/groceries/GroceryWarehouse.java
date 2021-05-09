@@ -3,8 +3,7 @@ package hu.komjati.groceries;
 
 
 import hu.komjati.Order;
-import hu.komjati.groceries.GroceriesSupplier;
-import hu.komjati.groceries.Grocery;
+import hu.komjati.SupplierImpl;
 import hu.komjati.interfaces.Customer;
 import hu.komjati.interfaces.Product;
 import hu.komjati.interfaces.Supplier;
@@ -18,7 +17,7 @@ public class GroceryWarehouse implements Warehouse {
 
     private List<Grocery> products;
     private List<Customer> customers;
-    private List<GroceriesSupplier> suppliers;
+    private List<Supplier> suppliers;
     private List<Order> orders;
 
     public GroceryWarehouse() {
@@ -60,8 +59,8 @@ public class GroceryWarehouse implements Warehouse {
 
     @Override
     public boolean addSupplier(Supplier s) {
-        if(s instanceof GroceriesSupplier && !suppliers.contains(s)){
-            this.suppliers.add((GroceriesSupplier)s);
+        if(s instanceof SupplierImpl && !suppliers.contains(s)){
+            this.suppliers.add(s);
             return true;
         }
         return false;
@@ -70,7 +69,7 @@ public class GroceryWarehouse implements Warehouse {
     @Override
     public List<Supplier> getAllSuppliers() {
         List<Supplier> temp=new ArrayList<>();
-        for (GroceriesSupplier s:suppliers) {
+        for (Supplier s:suppliers) {
             temp.add(s);
         }
         return temp;
@@ -78,7 +77,7 @@ public class GroceryWarehouse implements Warehouse {
 
     @Override
     public Supplier getSupplierByID(UUID ID) {
-        for (GroceriesSupplier s:suppliers) {
+        for (Supplier s:suppliers) {
             if(s.getID()==ID){
                 return s;
             }
@@ -114,16 +113,30 @@ public class GroceryWarehouse implements Warehouse {
 
     @Override
     public boolean recordNewOrder(Order o) {
+
+        if(this.customers.contains(o.getCustomer())&&this.products.containsAll(o.getPrdoucts())){
+            orders.add(o);
+            return true;
+        }
         return false;
     }
 
     @Override
     public List<Order> getAllOrder() {
-        return null;
+        List<Order> temp=new ArrayList<>();
+        for (Order o:orders) {
+            temp.add(o);
+        }
+        return temp;
     }
 
     @Override
     public Order getOrderByID(UUID ID) {
+        for (Order o:orders) {
+            if(o.getID()==ID){
+                return o;
+            }
+        }
         return null;
     }
 }

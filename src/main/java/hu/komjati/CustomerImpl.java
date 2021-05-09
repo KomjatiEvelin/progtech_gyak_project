@@ -49,7 +49,7 @@ public class CustomerImpl implements Customer {
     }
 
     @Override
-    public void orderProducts(List<Product> p, Warehouse w) {
+    public void orderProducts(Warehouse w) {
         w.recordNewOrder(new OrderBuilder().setCustomer(this).setCart(myCart).createOrder());
     }
 

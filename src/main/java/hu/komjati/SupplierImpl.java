@@ -1,4 +1,4 @@
-package hu.komjati.groceries;
+package hu.komjati;
 
 import hu.komjati.interfaces.Product;
 import hu.komjati.interfaces.Supplier;
@@ -8,12 +8,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-public class GroceriesSupplier implements Supplier {
+public class SupplierImpl implements Supplier {
 
     private UUID ID;
     private String name;
 
-    public GroceriesSupplier(String name) {
+    public SupplierImpl(String name) {
         this.ID = UUID.randomUUID();
         this.name = name;
     }

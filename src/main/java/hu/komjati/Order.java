@@ -20,4 +20,31 @@ public class Order {
         this.orderedProds=cart;
         this.recordTime=new Date();
     }
+
+    public UUID getID(){
+        return this.ID;
+    }
+
+    public Customer getCustomer(){
+        return this.customer;
+    }
+
+    public List<Product> getPrdoucts(){
+        return this.orderedProds;
+    }
+
+    public  Date getRecordTime(){
+        return this.recordTime;
+    }
+
+    @Override
+    public String toString() {
+        String text="";
+        text+="\n-----ORDERED--------\n"+this.ID+":"+this.customer.toString()+" -----\n";
+        for (Product p:orderedProds) {
+            text+="\n"+p.toString();
+        }
+        text+="\n-----"+this.recordTime+"--------";
+        return text;
+    }
 }
