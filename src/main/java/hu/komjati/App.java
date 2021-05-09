@@ -38,7 +38,7 @@ public class  App
 
         ListaKiir(w.getProductsList());
 
-        Customer c=new CustomerImpl("Joe","3010 Shell str. 43");
+        Customer c= new CustomerImplBuilder().setName("Joe").setAddress("3010 Shell str. 43").createCustomerImpl();
         w.addCustomer(c);
 
         System.out.println(w.getCustomerByID(c.getID()).toString());

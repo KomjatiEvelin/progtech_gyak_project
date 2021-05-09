@@ -31,10 +31,13 @@ public class GroceriesSupplier implements Supplier {
     @Override
     public void Supply(List<Product> prods, Warehouse w) {
 
-        for (Product product : prods) {
-            w.addProduct(product);
+        if(w.getSupplierByID(this.ID)!=null) {
+            for (Product product : prods) {
+                w.addProduct(product);
+            }
+            System.out.println(this.getName() + " supplied " + prods.size() + " product(s) " + new Date());
         }
-        System.out.println(this.getName()+" supplied "+prods.size()+" product(s) "+ new Date());
+        else System.out.println("Ez a beszállító nincs a rendszerben, előbb regisztrálja");
 
     }
 }

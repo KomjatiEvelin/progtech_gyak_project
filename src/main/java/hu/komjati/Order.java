@@ -14,7 +14,7 @@ public class Order {
     private UUID ID;
     private Date recordTime;
 
-    public Order(CustomerImpl customer, List<Product> cart) {
+    public Order(Customer customer, List<Product> cart) {
         this.ID=UUID.randomUUID();
         this.customer=customer;
         this.orderedProds=cart;

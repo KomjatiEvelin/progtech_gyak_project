@@ -1,7 +1,6 @@
 package hu.komjati;
 
-import hu.komjati.groceries.GroceriesSupplier;
-import hu.komjati.groceries.Grocery;
+
 import hu.komjati.interfaces.Customer;
 import hu.komjati.interfaces.Product;
 import hu.komjati.interfaces.Warehouse;
@@ -19,9 +18,9 @@ public class CustomerImpl implements Customer {
 
     public CustomerImpl(String name, String address) {
         this.name = name;
-        this.myCart=new ArrayList<>();
-        this.ID=UUID.randomUUID();
-        this.address=address;
+        this.myCart = new ArrayList<>();
+        this.ID = UUID.randomUUID();
+        this.address = address;
     }
 
     @Override
@@ -36,7 +35,7 @@ public class CustomerImpl implements Customer {
 
     @Override
     public void setName(String name) {
-        this.name=name;
+        this.name = name;
     }
 
     @Override
@@ -46,12 +45,12 @@ public class CustomerImpl implements Customer {
 
     @Override
     public void setAddress(String address) {
-        this.address=address;
+        this.address = address;
     }
 
     @Override
     public void orderProducts(List<Product> p, Warehouse w) {
-        w.recordNewOrder(new Order(this,myCart));
+        w.recordNewOrder(new Order(this, myCart));
     }
 
 
@@ -63,6 +62,6 @@ public class CustomerImpl implements Customer {
 
     @Override
     public String toString() {
-        return this.name+" - "+this.address;
+        return this.name + " - " + this.address;
     }
 }
