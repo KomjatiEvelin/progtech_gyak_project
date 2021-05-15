@@ -1,6 +1,4 @@
-package hu.komjati.groceries;
-
-import hu.komjati.interfaces.Product;
+package hu.komjati.products;
 
 import java.util.Date;
 import java.util.UUID;

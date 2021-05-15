@@ -1,9 +1,9 @@
-package hu.komjati;
+package hu.komjati.customers;
 
 
-import hu.komjati.interfaces.Customer;
-import hu.komjati.interfaces.Product;
-import hu.komjati.interfaces.Warehouse;
+import hu.komjati.orders.OrderBuilder;
+import hu.komjati.products.Product;
+import hu.komjati.warehouses.Warehouse;
 
 import java.util.ArrayList;
 import java.util.List;

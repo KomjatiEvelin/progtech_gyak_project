@@ -1,7 +1,7 @@
-package hu.komjati;
+package hu.komjati.orders;
 
-import hu.komjati.interfaces.Customer;
-import hu.komjati.interfaces.Product;
+import hu.komjati.customers.Customer;
+import hu.komjati.products.Product;
 
 import java.util.Date;
 import java.util.List;
@@ -40,7 +40,7 @@ public class Order {
     @Override
     public String toString() {
         String text="";
-        text+="\n-----ORDERED--------\n"+this.ID+":"+this.customer.toString()+" -----\n";
+        text+="\n-----ORDERED PRODUCTS--------\n"+this.ID+":"+this.customer.toString()+" -----\n";
         for (Product p:orderedProds) {
             text+="\n"+p.toString();
         }

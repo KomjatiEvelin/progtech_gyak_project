@@ -1,4 +1,7 @@
-package hu.komjati.interfaces;
+package hu.komjati.suppliers;
+
+import hu.komjati.products.Product;
+import hu.komjati.warehouses.Warehouse;
 
 import java.util.List;
 import java.util.UUID;

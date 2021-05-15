@@ -1,4 +1,4 @@
-package hu.komjati;
+package hu.komjati.customers;
 
 public class CustomerImplBuilder {
     private String name;

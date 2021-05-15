@@ -1,6 +1,8 @@
-package hu.komjati.interfaces;
+package hu.komjati.customers;
 
-import java.util.List;
+import hu.komjati.products.Product;
+import hu.komjati.warehouses.Warehouse;
+
 import java.util.UUID;
 
 public interface Customer {

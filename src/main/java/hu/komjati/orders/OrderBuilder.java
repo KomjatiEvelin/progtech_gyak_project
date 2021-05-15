@@ -1,7 +1,7 @@
-package hu.komjati;
+package hu.komjati.orders;
 
-import hu.komjati.interfaces.Customer;
-import hu.komjati.interfaces.Product;
+import hu.komjati.customers.Customer;
+import hu.komjati.products.Product;
 
 import java.util.List;
 

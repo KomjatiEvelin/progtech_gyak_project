@@ -1,8 +1,8 @@
-package hu.komjati;
+package hu.komjati.suppliers;
 
-import hu.komjati.interfaces.Product;
-import hu.komjati.interfaces.Supplier;
-import hu.komjati.interfaces.Warehouse;
+import hu.komjati.products.Product;
+import hu.komjati.suppliers.Supplier;
+import hu.komjati.warehouses.Warehouse;
 
 import java.util.Date;
 import java.util.List;

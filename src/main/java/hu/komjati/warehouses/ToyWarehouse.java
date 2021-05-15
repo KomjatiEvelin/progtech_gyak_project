@@ -1,4 +1,4 @@
-package hu.komjati.toys;
+package hu.komjati.warehouses;
 
 public class ToyWarehouse {
 }
