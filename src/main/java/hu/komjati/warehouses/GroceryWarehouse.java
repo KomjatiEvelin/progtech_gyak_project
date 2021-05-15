@@ -84,7 +84,7 @@ public class GroceryWarehouse implements Warehouse {
     @Override
     public boolean recordNewOrder(Order o) {
 
-        if(this.customers.getAllCustomers().contains(o.getCustomer())&&this.products.getProductsList().containsAll(o.getPrdoucts())){ //TODO kiemelni külön vizsgálatba
+        if(this.customers.getAllCustomers().contains(o.getCustomer())&&this.products.getProductsList().containsAll(o.getOrderedProds())){ //TODO kiemelni külön vizsgálatba
             this.orders.recordNewOrder(o);
             return true;
         }

@@ -7,8 +7,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import lombok.Getter;
 
-
+@Getter
 public class Order {
 
     private Customer customer;
@@ -23,21 +24,7 @@ public class Order {
         this.recordTime=new Date();
     }
 
-    public UUID getID(){
-        return this.ID;
-    }
 
-    public Customer getCustomer(){
-        return this.customer;
-    }
-
-    public List<Product> getPrdoucts(){
-        return this.orderedProds;
-    }
-
-    public  Date getRecordTime(){
-        return this.recordTime;
-    }
 
     @Override
     public String toString() {

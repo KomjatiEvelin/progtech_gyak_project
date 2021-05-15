@@ -48,6 +48,8 @@ public class  App
         ListaKiir(w.getProductsList());
 
         Customer c= customerFactory.createCustomer("Próba János","1234 Teszfalva, Próba út 19.");
+
+
         w.addCustomer(c);
 
         System.out.println(w.getCustomerByID(c.getID()).toString());

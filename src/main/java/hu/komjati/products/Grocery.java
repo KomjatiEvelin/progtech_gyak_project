@@ -2,10 +2,15 @@ package hu.komjati.products;
 import java.util.Date;
 import java.util.UUID;
 
+import lombok.*;
+
+@Getter
+@Setter
+@ToString
 public class Grocery implements Product {
 
 
-    private UUID ID;
+    @Setter(AccessLevel.NONE)  private UUID ID;
     private String name;
     private int price;
     private Date expireDay;
@@ -20,32 +25,4 @@ public class Grocery implements Product {
     }
 
 
-    @Override
-    public String toString(){
-        return "ID :"+this.getID()+" NAME:"+this.getName()+" PRICE:"+this.getPrice()+" TYPE:"+this.getType()+" EXPIRE DAY: "+this.getExpDay();
-    }
-
-    private String getExpDay() {
-        return  this.expireDay.toString();
-    }
-
-    private GroceryType getType() {
-        return this.type;
-    }
-
-
-    @Override
-    public String getName() {
-        return this.name;
-    }
-
-    @Override
-    public int getPrice() {
-        return this.price;
-    }
-
-    @Override
-    public UUID getID() {
-        return this.ID;
-    }
 }

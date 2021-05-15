@@ -8,10 +8,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class CustomerImpl implements Customer {
 
     private List<Product> myCart;
-    private UUID ID;
+
+    @Setter(AccessLevel.NONE) private UUID ID;
+
     private String name;
     private String address;
 
@@ -22,30 +30,6 @@ public class CustomerImpl implements Customer {
         this.address = address;
     }
 
-    @Override
-    public UUID getID() {
-        return this.ID;
-    }
-
-    @Override
-    public String getName() {
-        return this.name;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String getAddress() {
-        return this.address;
-    }
-
-    @Override
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     @Override
     public void orderProducts(Warehouse w) {
