@@ -1,6 +1,6 @@
 package hu.komjati;
 
-import hu.komjati.customers.CustomerImplBuilder;
+import hu.komjati.customers.CustomerFactory;
 import hu.komjati.databases.*;
 import hu.komjati.databases.memoryDBs.MemoryCustomerDB;
 import hu.komjati.databases.memoryDBs.MemoryOrderDB;
@@ -15,27 +15,25 @@ import hu.komjati.products.Product;
 import hu.komjati.suppliers.Supplier;
 import hu.komjati.warehouses.Warehouse;
 
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Hello world!
- *
- */
 public class  App
 {
 
     static Random rnd=new Random();
     public static void main( String[] args )
     {
+        CustomerFactory customerFactory=CustomerFactory.getInstance();
         CustomerDB customers=new MemoryCustomerDB();
         ProductDB products=new MemoryProductDB();
         SupplierDB suppliers=new MemorySuppliersDB();
         OrderDB orders=new MemoryOrderDB();
 
-        Warehouse w=new GroceryWarehouse(customers,products,suppliers,orders);
+        Warehouse w=GroceryWarehouse.getInstance(customers,products,suppliers,orders);
 
         Supplier gs=new SupplierImpl("Goods");
         w.addSupplier(gs);
@@ -49,7 +47,7 @@ public class  App
 
         ListaKiir(w.getProductsList());
 
-        Customer c= new CustomerImplBuilder().setName("Joe").setAddress("3010 Shell str. 43").createCustomerImpl();
+        Customer c= customerFactory.createCustomer("Próba János","1234 Teszfalva, Próba út 19.");
         w.addCustomer(c);
 
         System.out.println(w.getCustomerByID(c.getID()).toString());

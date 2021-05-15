@@ -13,16 +13,25 @@ import java.util.UUID;
 
 public class GroceryWarehouse implements Warehouse {
 
+    private static GroceryWarehouse groceryWarehouse=null;
+
     CustomerDB customers;
     ProductDB products;
     SupplierDB suppliers;
     OrderDB orders;
 
-    public GroceryWarehouse(CustomerDB customers,ProductDB products,SupplierDB suppliers,OrderDB orders) {
+    private GroceryWarehouse(CustomerDB customers,ProductDB products,SupplierDB suppliers,OrderDB orders) {
         this.products = products;
         this.customers=customers;
         this.suppliers=suppliers;
         this.orders=orders;
+    }
+
+    public static GroceryWarehouse getInstance(CustomerDB customers,ProductDB products,SupplierDB suppliers,OrderDB orders){
+        if(groceryWarehouse==null){
+            groceryWarehouse=new GroceryWarehouse(customers,products,suppliers,orders);
+        }
+        return groceryWarehouse;
     }
 
     @Override

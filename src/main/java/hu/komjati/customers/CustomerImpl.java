@@ -1,6 +1,5 @@
 package hu.komjati.customers;
 
-
 import hu.komjati.orders.OrderBuilder;
 import hu.komjati.products.Product;
 import hu.komjati.warehouses.Warehouse;

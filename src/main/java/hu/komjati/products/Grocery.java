@@ -1,5 +1,4 @@
 package hu.komjati.products;
-
 import java.util.Date;
 import java.util.UUID;
 

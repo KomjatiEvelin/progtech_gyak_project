@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+
+
 public class Order {
 
     private Customer customer;
@@ -40,11 +42,11 @@ public class Order {
     @Override
     public String toString() {
         String text="";
-        text+="\n-----ORDERED PRODUCTS--------\n"+this.ID+":"+this.customer.toString()+" -----\n";
+        text+="\n-----ORDERED PRODUCTS by "+this.customer.toString()+" ------\n";
         for (Product p:orderedProds) {
             text+="\n"+p.toString();
         }
-        text+="\n-----"+this.recordTime+"--------";
+        text+="\n\n-----"+this.ID+"----"+this.recordTime+"--------";
         return text;
     }
 }
