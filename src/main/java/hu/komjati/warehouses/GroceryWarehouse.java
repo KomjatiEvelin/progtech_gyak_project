@@ -15,10 +15,10 @@ public class GroceryWarehouse implements Warehouse {
 
     private static GroceryWarehouse groceryWarehouse=null;
 
-    CustomerDB customers;
-    ProductDB products;
-    SupplierDB suppliers;
-    OrderDB orders;
+    private final CustomerDB customers;
+    private final ProductDB products;
+    private final SupplierDB suppliers;
+    private final OrderDB orders;
 
     private GroceryWarehouse(CustomerDB customers,ProductDB products,SupplierDB suppliers,OrderDB orders) {
         this.products = products;
