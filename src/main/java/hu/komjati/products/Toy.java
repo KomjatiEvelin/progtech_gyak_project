@@ -14,14 +14,14 @@ public class Toy implements Product{
     @Setter(AccessLevel.NONE)  private UUID ID;
     private int ageLimit;
 
-    private final Product p;
+    public Toy(String name, int price,int ageLimit) {
+        this.name = name;
+        this.price = price;
+        this.ageLimit=ageLimit;
+    }
 
-
-    public Toy(Product p) {
-        this.p=p;
-        this.name=p.getName();
-        this.price=p.getPrice();
-        this.ID=p.getID();
-        this.ageLimit=0;
+    @Override
+    public String toString() {
+        return this.name+":"+this.price+" HUF : Over age"+this.ageLimit;
     }
 }

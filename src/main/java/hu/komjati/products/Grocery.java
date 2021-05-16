@@ -6,7 +6,6 @@ import lombok.*;
 
 @Getter
 @Setter
-@ToString
 public class Grocery implements Product {
 
 
@@ -14,19 +13,18 @@ public class Grocery implements Product {
     private int price;
     @Setter(AccessLevel.NONE)  private UUID ID;
     private Date expireDay;
-    private GroceryType type;
+    @Setter(AccessLevel.NONE) private GroceryType type;
 
-
-    private final Product p;
-
-
-    public Grocery(Product p) {
-       this.p=p;
-       this.name=p.getName();
-       this.price=p.getPrice();
-       this.ID=p.getID();
-       this.expireDay=new Date();
-       this.type=GroceryType.other;
+    public Grocery(String name, int price,Date expireDay) {
+        this.name = name;
+        this.price = price;
+        this.expireDay=expireDay;
+        this.ID=UUID.randomUUID();
+        this.type=GroceryType.other;
     }
 
+    @Override
+    public String toString() {
+        return "Grocery : "+this.name+" : "+this.price+" HUF : "+this.expireDay;
+    }
 }
