@@ -37,14 +37,5 @@ public class AppTest
     }
 
 
-    @Test
-    public void getProdByIDSuccess(){
-        //given
-        Warehouse w=mock(GroceryWarehouse.class);
-        Product p=mock(Grocery.class);
-        //w.addProduct(p);
-        //when
-
-    }
 
 }
