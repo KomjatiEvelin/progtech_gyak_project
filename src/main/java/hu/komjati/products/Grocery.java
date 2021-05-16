@@ -12,18 +12,21 @@ public class Grocery implements Product {
 
     private String name;
     private int price;
+    @Setter(AccessLevel.NONE)  private UUID ID;
     private Date expireDay;
     private GroceryType type;
 
-    @Setter(AccessLevel.NONE)  private UUID ID;
+
+    private final Product p;
 
 
-    public Grocery(String name, int price, Date expireDay, GroceryType type) {
-        this.ID=UUID.randomUUID();
-        this.name = name;
-        this.price = price;
-        this.expireDay = expireDay;
-        this.type = type;
+    public Grocery(Product p) {
+       this.p=p;
+       this.name=p.getName();
+       this.price=p.getPrice();
+       this.ID=p.getID();
+       this.expireDay=new Date();
+       this.type=GroceryType.other;
     }
 
 }

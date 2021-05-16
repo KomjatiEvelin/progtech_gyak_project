@@ -7,10 +7,9 @@ import hu.komjati.databases.memoryDBs.MemoryCustomerDB;
 import hu.komjati.databases.memoryDBs.MemoryOrderDB;
 import hu.komjati.databases.memoryDBs.MemoryProductDB;
 import hu.komjati.databases.memoryDBs.MemorySuppliersDB;
-import hu.komjati.orders.Order;
-import hu.komjati.orders.OrderImpl;
 import hu.komjati.products.Grocery;
 import hu.komjati.products.GroceryType;
+import hu.komjati.products.ProductImpl;
 import hu.komjati.suppliers.SupplierImpl;
 import hu.komjati.warehouses.GroceryWarehouse;
 import hu.komjati.customers.Customer;
@@ -43,7 +42,7 @@ public class  App
 
         List<Product> suppliedProducts=new ArrayList<>();
         for (int i=0;i<10;i++){
-            suppliedProducts.add(new Grocery("product"+i,i*rnd.nextInt(100),new Date(), GroceryType.fruit));
+            suppliedProducts.add(new Grocery(new ProductImpl("product"+i,i*rnd.nextInt(100))));
         }
         gs.Supply(suppliedProducts,w);
 
