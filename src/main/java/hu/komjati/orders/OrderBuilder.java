@@ -19,7 +19,7 @@ public class OrderBuilder {
         return this;
     }
 
-    public Order createOrder() {
-        return new Order(customer, cart);
+    public OrderImpl createOrder() {
+        return new OrderImpl(customer, cart);
     }
 }

@@ -1,8 +1,7 @@
 package hu.komjati.databases.memoryDBs;
 
 import hu.komjati.databases.OrderDB;
-import hu.komjati.orders.Order;
-import hu.komjati.products.Product;
+import hu.komjati.orders.OrderImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,31 +9,31 @@ import java.util.UUID;
 
 public class MemoryOrderDB implements OrderDB {
 
-    private List<Order> orders;
+    private List<OrderImpl> orders;
 
     public MemoryOrderDB() {
         this.orders = new ArrayList<>();
     }
 
     @Override
-    public void recordNewOrder(Order o) {
+    public void recordNewOrder(OrderImpl o) {
 
         this.orders.add(o);
 
     }
 
     @Override
-    public List<Order> getAllOrder() {
-        List<Order> temp=new ArrayList<>();
-        for (Order o:orders) {
+    public List<OrderImpl> getAllOrder() {
+        List<OrderImpl> temp=new ArrayList<>();
+        for (OrderImpl o:orders) {
             temp.add(o);
         }
         return temp;
     }
 
     @Override
-    public Order getOrderByID(UUID ID) {
-        for (Order o:orders) {
+    public OrderImpl getOrderByID(UUID ID) {
+        for (OrderImpl o:orders) {
             if(o.getID()==ID){
                 return o;
             }

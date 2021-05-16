@@ -10,11 +10,13 @@ import lombok.*;
 public class Grocery implements Product {
 
 
-    @Setter(AccessLevel.NONE)  private UUID ID;
     private String name;
     private int price;
     private Date expireDay;
     private GroceryType type;
+
+    @Setter(AccessLevel.NONE)  private UUID ID;
+
 
     public Grocery(String name, int price, Date expireDay, GroceryType type) {
         this.ID=UUID.randomUUID();
@@ -23,6 +25,5 @@ public class Grocery implements Product {
         this.expireDay = expireDay;
         this.type = type;
     }
-
 
 }

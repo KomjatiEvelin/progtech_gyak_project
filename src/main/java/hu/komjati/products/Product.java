@@ -8,4 +8,7 @@ public interface Product {
     int getPrice();
     UUID getID();
 
+    void setName(String name);
+    void setPrice(int price);
+
 }

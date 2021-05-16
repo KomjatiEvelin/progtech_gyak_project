@@ -7,6 +7,8 @@ import hu.komjati.databases.memoryDBs.MemoryCustomerDB;
 import hu.komjati.databases.memoryDBs.MemoryOrderDB;
 import hu.komjati.databases.memoryDBs.MemoryProductDB;
 import hu.komjati.databases.memoryDBs.MemorySuppliersDB;
+import hu.komjati.orders.Order;
+import hu.komjati.orders.OrderImpl;
 import hu.komjati.products.Grocery;
 import hu.komjati.products.GroceryType;
 import hu.komjati.suppliers.SupplierImpl;
@@ -51,6 +53,8 @@ public class  App
         Customer c= customerFactory.createCustomer("Próba János","1234 Teszfalva, Próba út 19.");
 
 
+
+
         w.addCustomer(c);
 
         System.out.println(w.getCustomerByID(c.getID()).toString());
@@ -62,7 +66,6 @@ public class  App
         c.orderProducts(w);
 
         ListaKiir(w.getAllOrder());
-
     }
 
     static void ListaKiir(List l){

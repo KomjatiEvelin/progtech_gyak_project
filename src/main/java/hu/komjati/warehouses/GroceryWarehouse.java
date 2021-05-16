@@ -4,7 +4,7 @@ import hu.komjati.databases.CustomerDB;
 import hu.komjati.databases.OrderDB;
 import hu.komjati.databases.ProductDB;
 import hu.komjati.databases.SupplierDB;
-import hu.komjati.orders.Order;
+import hu.komjati.orders.OrderImpl;
 import hu.komjati.customers.Customer;
 import hu.komjati.products.Product;
 import hu.komjati.suppliers.Supplier;
@@ -82,7 +82,7 @@ public class GroceryWarehouse implements Warehouse {
     }
 
     @Override
-    public boolean recordNewOrder(Order o) {
+    public boolean recordNewOrder(OrderImpl o) {
 
         if(this.customers.getAllCustomers().contains(o.getCustomer())&&this.products.getProductsList().containsAll(o.getOrderedProds())){ //TODO kiemelni külön vizsgálatba
             this.orders.recordNewOrder(o);
@@ -92,12 +92,12 @@ public class GroceryWarehouse implements Warehouse {
     }
 
     @Override
-    public List<Order> getAllOrder() {
+    public List<OrderImpl> getAllOrder() {
         return this.orders.getAllOrder();
     }
 
     @Override
-    public Order getOrderByID(UUID ID) {
+    public OrderImpl getOrderByID(UUID ID) {
         return this.orders.getOrderByID(ID);
     }
 }
