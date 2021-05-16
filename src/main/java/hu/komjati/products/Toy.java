@@ -22,6 +22,6 @@ public class Toy implements Product{
 
     @Override
     public String toString() {
-        return this.name+":"+this.price+" HUF : Over age"+this.ageLimit;
+        return this.name+":"+this.price+" HUF : Over age "+this.ageLimit;
     }
 }

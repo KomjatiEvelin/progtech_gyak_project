@@ -1,12 +1,15 @@
 package hu.komjati.warehouses;
 
+
 import hu.komjati.databases.CustomerDB;
 import hu.komjati.databases.OrderDB;
 import hu.komjati.databases.ProductDB;
 import hu.komjati.databases.SupplierDB;
 import hu.komjati.orders.OrderImpl;
 import hu.komjati.customers.Customer;
+import hu.komjati.products.Grocery;
 import hu.komjati.products.Product;
+import hu.komjati.suppliers.GrocerySupplier;
 import hu.komjati.suppliers.Supplier;
 import java.util.List;
 import java.util.UUID;
@@ -35,8 +38,11 @@ public class GroceryWarehouse implements Warehouse {
     }
 
     @Override
-    public void addProduct(Product p) {
-        this.products.addProduct(p);
+    public void addProduct(Product p) throws Exception {
+
+        if(p instanceof Grocery)
+            this.products.addProduct(p);
+        else throw new Exception("Ilyen áruval nem foglalkozunk");
     }
 
     @Override
@@ -51,8 +57,16 @@ public class GroceryWarehouse implements Warehouse {
 
 
     @Override
-    public void addSupplier(Supplier s) {
+    public void addSupplier(Supplier s) throws Exception {
+
+        if(!IsGrocerySupplier(s)) {
+            throw new Exception("Csak élelmiszer beszállítókkal dolgozunk");
+        }
         this.suppliers.addSupplier(s);
+    }
+
+    private boolean IsGrocerySupplier(Supplier s) {
+        return s instanceof GrocerySupplier;
     }
 
     @Override
@@ -82,13 +96,23 @@ public class GroceryWarehouse implements Warehouse {
     }
 
     @Override
-    public boolean recordNewOrder(OrderImpl o) {
+    public void recordNewOrder(OrderImpl o) throws Exception {
 
-        if(this.customers.getAllCustomers().contains(o.getCustomer())&&this.products.getProductsList().containsAll(o.getOrderedProds())){ //TODO kiemelni külön vizsgálatba
-            this.orders.recordNewOrder(o);
-            return true;
+        if(!isCustomerRegistered(o.getCustomer())){
+            throw new Exception("Nincs ilyen felhasználó nálunk");
         }
-        return false;
+        if(!isProductsInWarehouse(o.getOrderedProds())){
+            throw new Exception("Ezek a termékek nem kaphatóak");
+        }
+        this.orders.recordNewOrder(o);
+    }
+
+    private boolean isCustomerRegistered(Customer c){
+        return this.customers.getAllCustomers().contains(c);
+    }
+
+    private boolean isProductsInWarehouse(List<Product> products){
+        return this.products.getProductsList().containsAll(products);
     }
 
     @Override

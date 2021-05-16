@@ -32,8 +32,14 @@ public class CustomerImpl implements Customer {
 
 
     @Override
-    public void orderProducts(Warehouse w) {
-        w.recordNewOrder(new OrderBuilder().setCustomer(this).setCart(myCart).createOrder());
+    public void orderProducts(Warehouse w) throws Exception {
+        try {
+            w.recordNewOrder(new OrderBuilder().setCustomer(this).setCart(myCart).createOrder());
+        }
+        catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+
     }
 
 

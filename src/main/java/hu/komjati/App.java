@@ -8,40 +8,57 @@ import hu.komjati.databases.memoryDBs.MemoryOrderDB;
 import hu.komjati.databases.memoryDBs.MemoryProductDB;
 import hu.komjati.databases.memoryDBs.MemorySuppliersDB;
 import hu.komjati.products.*;
-import hu.komjati.suppliers.SupplierImpl;
+import hu.komjati.suppliers.GrocerySupplier;
+import hu.komjati.suppliers.ToySupplier;
 import hu.komjati.warehouses.GroceryWarehouse;
 import hu.komjati.customers.Customer;
 import hu.komjati.suppliers.Supplier;
+import hu.komjati.warehouses.ToyWarehouse;
 import hu.komjati.warehouses.Warehouse;
 
-
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 public class  App
 {
 
-    static Random rnd=new Random();
     public static void main( String[] args )
     {
         CustomerFactory customerFactory= CustomerFactoryImpl.getInstance();
-        CustomerDB customers=new MemoryCustomerDB();
-        ProductDB products=new MemoryProductDB();
-        SupplierDB suppliers=new MemorySuppliersDB();
-        OrderDB orders=new MemoryOrderDB();
+        CustomerDB GWcustomers=new MemoryCustomerDB();
+        ProductDB GWproducts=new MemoryProductDB();
+        SupplierDB GWsuppliers=new MemorySuppliersDB();
+        OrderDB GWorders=new MemoryOrderDB();
 
-        Warehouse w=GroceryWarehouse.getInstance(customers,products,suppliers,orders);
+        CustomerDB TWcustomers=new MemoryCustomerDB();
+        ProductDB TWproducts=new MemoryProductDB();
+        SupplierDB TWsuppliers=new MemorySuppliersDB();
+        OrderDB TWorders=new MemoryOrderDB();
 
-        Supplier gs=new SupplierImpl("Goods");
-        w.addSupplier(gs);
+        Warehouse w=GroceryWarehouse.getInstance(GWcustomers,GWproducts,GWsuppliers,GWorders);
+        Warehouse tw= ToyWarehouse.getInstance(TWcustomers,TWproducts,TWsuppliers,TWorders);
 
-        List<Product> suppliedProducts=new ArrayList<>();
-        for (int i=0;i<10;i++){
-            suppliedProducts.add(new Grocery("prod"+i,100*i,new Date()));
+        Supplier gs=new GrocerySupplier("Goods");
+        Supplier ts=new ToySupplier("Games");
+
+        try {
+            w.addSupplier(gs);
+            tw.addSupplier(ts);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        gs.Supply(suppliedProducts,w);
+
+        try {
+            for (int i=0;i<10;i++){
+
+                gs.Supply (new Grocery("prod"+i,100*i,new Date()),w);
+                ts.Supply(new Toy("toy"+i,50*i,i*2),tw);
+            }
+            gs.Supply(new Toy("toy1",300,1),w);
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
 
 
         ListaKiir(w.getProductsList());
@@ -49,19 +66,13 @@ public class  App
         Customer c= customerFactory.createCustomer("Próba János","1234 Teszfalva, Próba út 19.");
 
 
-
-
         w.addCustomer(c);
 
         System.out.println(w.getCustomerByID(c.getID()).toString());
 
-        for (Product p:suppliedProducts) {
-            if(p.getPrice()%2!=0)
-            c.addToCart(p);
-        }
-        c.orderProducts(w);
+        System.out.println();
 
-        ListaKiir(w.getAllOrder());
+        ListaKiir(tw.getProductsList());
     }
 
     static void ListaKiir(List l){

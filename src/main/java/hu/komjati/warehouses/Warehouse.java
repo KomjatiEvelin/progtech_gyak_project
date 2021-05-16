@@ -11,12 +11,12 @@ import java.util.UUID;
 
 public interface Warehouse {
 
-    void addProduct(Product p);
+    void addProduct(Product p) throws Exception;
     List<Product> getProductsList();
     Product getProductByID(UUID ID);
 
 
-   boolean recordNewOrder(OrderImpl o);
+   void recordNewOrder(OrderImpl o) throws Exception;
     List<OrderImpl> getAllOrder();
     OrderImpl getOrderByID(UUID ID);
 
@@ -25,7 +25,7 @@ public interface Warehouse {
     List<Customer> getAllCustomers();
     Customer getCustomerByID(UUID ID);
 
-    void addSupplier(Supplier s);
+    void addSupplier(Supplier s) throws Exception;
     List<Supplier> getAllSuppliers();
     Supplier getSupplierByID(UUID ID);
 }
