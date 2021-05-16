@@ -1,6 +1,7 @@
 package hu.komjati;
 
 import hu.komjati.customers.CustomerFactory;
+import hu.komjati.customers.CustomerFactoryImpl;
 import hu.komjati.databases.*;
 import hu.komjati.databases.memoryDBs.MemoryCustomerDB;
 import hu.komjati.databases.memoryDBs.MemoryOrderDB;
@@ -27,7 +28,7 @@ public class  App
     static Random rnd=new Random();
     public static void main( String[] args )
     {
-        CustomerFactory customerFactory=CustomerFactory.getInstance();
+        CustomerFactory customerFactory= CustomerFactoryImpl.getInstance();
         CustomerDB customers=new MemoryCustomerDB();
         ProductDB products=new MemoryProductDB();
         SupplierDB suppliers=new MemorySuppliersDB();
