@@ -1,4 +1,4 @@
 package hu.komjati;
 
-public class OrderTest {
+public class  OrderTest {
 }

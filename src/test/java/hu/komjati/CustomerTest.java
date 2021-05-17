@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import hu.komjati.customers.Customer;
+import hu.komjati.customers.CustomerFactory;
+import hu.komjati.customers.CustomerFactoryImpl;
 import hu.komjati.customers.CustomerImpl;
 import hu.komjati.databases.memoryDBs.MemoryCustomerDB;
 import hu.komjati.databases.memoryDBs.MemoryOrderDB;
@@ -37,6 +39,13 @@ public class CustomerTest {
     @Mock MemoryProductDB pdb;
     @Mock MemorySuppliersDB sdb;
 
+    @Test
+    public void testCreateCustomer(){
+        CustomerFactory f= CustomerFactoryImpl.getInstance();
+        Customer c=f.createCustomer("Test Name","1234 Test Address 12.");
+
+        assertInstanceOf(CustomerImpl.class,c);
+    }
     @Test
     public void testGetName()  {
         Customer c=new CustomerImpl("Test Name","1234 Test Address 12.");
