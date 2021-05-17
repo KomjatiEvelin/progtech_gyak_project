@@ -50,6 +50,11 @@ public class CustomerImpl implements Customer {
     }
 
     @Override
+    public List<Product> getProdutsInCart() {
+        return this.myCart;
+    }
+
+    @Override
     public String toString() {
         return this.name + " - " + this.address;
     }
