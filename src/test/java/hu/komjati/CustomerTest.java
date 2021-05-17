@@ -125,7 +125,7 @@ public class CustomerTest {
     }
 
     @Test
-    public void orderProductFail2() throws Exception {
+    public void orderProductFailOnUnregisteredUser() throws Exception {
         Warehouse w=ToyWarehouse.getInstance(cdb,pdb,sdb,odb);
         Customer c=new CustomerImpl("Test Name","1234 Test Address 12.");
 
