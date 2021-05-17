@@ -1,6 +1,7 @@
 package hu.komjati.databases.memoryDBs;
 
 import hu.komjati.databases.ProductDB;
+import hu.komjati.orders.Order;
 import hu.komjati.products.Grocery;
 import hu.komjati.products.Product;
 
@@ -47,6 +48,11 @@ public class MemoryProductDB implements ProductDB {
 
     @Override
     public void deleteProduct(UUID ID) {
-        //TODO
+        for (Product p:products) {
+            if (p.getID() == ID) {
+               products.remove(p) ;
+               break;
+            }
+        }
     }
 }

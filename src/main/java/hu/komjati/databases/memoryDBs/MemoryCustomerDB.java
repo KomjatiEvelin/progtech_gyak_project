@@ -40,6 +40,11 @@ public class MemoryCustomerDB implements CustomerDB {
 
     @Override
     public void deleteCustomer(UUID ID) {
-        //TODO
+        for (Customer c:customers) {
+            if (c.getID() == ID) {
+               customers.remove(c) ;
+               break;
+            }
+        }
     }
 }

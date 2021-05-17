@@ -5,6 +5,7 @@ import hu.komjati.databases.CustomerDB;
 import hu.komjati.databases.OrderDB;
 import hu.komjati.databases.ProductDB;
 import hu.komjati.databases.SupplierDB;
+import hu.komjati.orders.Order;
 import hu.komjati.orders.OrderImpl;
 import hu.komjati.customers.Customer;
 import hu.komjati.products.Product;
@@ -117,12 +118,12 @@ public class ToyWarehouse implements Warehouse {
     }
 
     @Override
-    public List<OrderImpl> getAllOrder() {
+    public List<Order> getAllOrder() {
         return this.orders.getAllOrder();
     }
 
     @Override
-    public OrderImpl getOrderByID(UUID ID) {
+    public Order getOrderByID(UUID ID) {
         return this.orders.getOrderByID(ID);
     }
 }

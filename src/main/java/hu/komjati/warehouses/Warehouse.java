@@ -1,6 +1,7 @@
 package hu.komjati.warehouses;
 
 
+import hu.komjati.orders.Order;
 import hu.komjati.orders.OrderImpl;
 import hu.komjati.customers.Customer;
 import hu.komjati.suppliers.Supplier;
@@ -17,8 +18,8 @@ public interface Warehouse {
 
 
    void recordNewOrder(OrderImpl o) throws Exception;
-    List<OrderImpl> getAllOrder();
-    OrderImpl getOrderByID(UUID ID);
+    List<Order> getAllOrder();
+    Order getOrderByID(UUID ID);
 
 
     void addCustomer(Customer c);

@@ -1,6 +1,7 @@
 package hu.komjati.databases.memoryDBs;
 
 import hu.komjati.databases.SupplierDB;
+import hu.komjati.products.Product;
 import hu.komjati.suppliers.Supplier;
 
 import java.util.ArrayList;
@@ -43,6 +44,11 @@ public class MemorySuppliersDB implements SupplierDB {
 
     @Override
     public void deleteSupplier(UUID ID) {
-        //TODO
+        for (Supplier s:suppliers) {
+            if (s.getID() == ID) {
+                suppliers.remove(s) ;
+                break;
+            }
+        }
     }
 }
