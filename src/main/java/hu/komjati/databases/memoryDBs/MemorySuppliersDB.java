@@ -1,7 +1,6 @@
 package hu.komjati.databases.memoryDBs;
 
 import hu.komjati.databases.SupplierDB;
-import hu.komjati.products.Product;
 import hu.komjati.suppliers.Supplier;
 
 import java.util.ArrayList;
