@@ -77,7 +77,7 @@ public class CustomerTest {
     @Test
     public void getProductsFromEmptyCart(){
         Customer c=new CustomerImpl("Test Name","1234 Test Address 12.");
-        List<Product> prodsInCart=c.getProdutsInCart();
+        List<Product> prodsInCart=c.getProductsInCart();
         assertTrue(prodsInCart.isEmpty());
     }
 
@@ -85,7 +85,7 @@ public class CustomerTest {
     public void addProductToCart_And_GetProductsFromNotEmptyCart(){
         Customer c=new CustomerImpl("Test Name","1234 Test Address 12.");
         c.addToCart(g);
-        List<Product> prodsInCart=c.getProdutsInCart();
+        List<Product> prodsInCart=c.getProductsInCart();
 
         assertEquals(g,prodsInCart.get(0));
 
@@ -127,12 +127,12 @@ public class CustomerTest {
 
 
         Throwable exception = assertThrows(Exception.class, () ->   c.orderProducts(w));
-        assertEquals("Ezek a termékek nem kaphatóak", exception.getMessage());
+        assertEquals("Product not found", exception.getMessage());
 
     }
 
     @Test
-    public void orderProductFailOnUnregisteredUser() throws Exception {
+    public void orderProductFailOnUnregisteredUser() {
         Warehouse w=ToyWarehouse.getInstance(cdb,pdb,sdb,odb);
         Customer c=new CustomerImpl("Test Name","1234 Test Address 12.");
 
@@ -140,7 +140,7 @@ public class CustomerTest {
 
 
         Throwable exception = assertThrows(Exception.class, () ->   c.orderProducts(w));
-        assertEquals("Nincs ilyen felhasználó nálunk", exception.getMessage());
+        assertEquals("Customer not found", exception.getMessage());
 
     }
 }

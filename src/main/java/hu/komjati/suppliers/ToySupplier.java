@@ -21,12 +21,12 @@ public class ToySupplier implements Supplier {
 
     public void Supply(Product prod, Warehouse w) throws Exception {
         if(!SupplierRegisteredInTheWarehouse(w)) {
-            throw new Exception("Ez a beszállító nincs a rendszerben, előbb regisztrálja");
+            throw new Exception("Supplier not registered");
         }
 
         if(!ProductIsToy(prod))
         {
-            throw new Exception("Mi nem foglalkozunk ilyen áruval");
+            throw new Exception("This product type is not our profile");
         }
         w.addProduct(prod);
 

@@ -65,7 +65,7 @@ public class SupplierTest {
 
         Throwable exception = assertThrows(Exception.class, () ->    s.Supply(grocery,gw));
         verify(gw, times(0)).addProduct(grocery);
-        assertEquals("Ez a beszállító nincs a rendszerben, előbb regisztrálja", exception.getMessage());
+        assertEquals("Supplier not registered", exception.getMessage());
     }
 
     @Test
@@ -76,7 +76,7 @@ public class SupplierTest {
         Throwable exception = assertThrows(Exception.class, () -> s.Supply(toy,gw));
 
         verify(gw, times(0)).addProduct(toy);
-        assertEquals("Mi nem foglalkozunk ilyen áruval", exception.getMessage());
+        assertEquals("This product type is not our profile", exception.getMessage());
     }
 
     @Test
@@ -95,7 +95,7 @@ public class SupplierTest {
 
         Throwable exception = assertThrows(Exception.class, () ->    s.Supply(toy,tw));
         verify(tw, times(0)).addProduct(toy);
-        assertEquals("Ez a beszállító nincs a rendszerben, előbb regisztrálja", exception.getMessage());
+        assertEquals("Supplier not registered", exception.getMessage());
     }
 
     @Test
@@ -106,6 +106,6 @@ public class SupplierTest {
         Throwable exception = assertThrows(Exception.class, () -> s.Supply(grocery,tw));
 
         verify(tw, times(0)).addProduct(grocery);
-        assertEquals("Mi nem foglalkozunk ilyen áruval", exception.getMessage());
+        assertEquals("This product type is not our profile", exception.getMessage());
     }
 }

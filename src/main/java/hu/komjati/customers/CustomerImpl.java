@@ -50,7 +50,7 @@ public class CustomerImpl implements Customer {
     }
 
     @Override
-    public List<Product> getProdutsInCart() {
+    public List<Product> getProductsInCart() {
         return this.myCart;
     }
 

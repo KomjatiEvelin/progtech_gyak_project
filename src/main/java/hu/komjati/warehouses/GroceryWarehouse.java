@@ -43,7 +43,7 @@ public class GroceryWarehouse implements Warehouse {
 
         if(p instanceof Grocery)
             this.products.addProduct(p);
-        else throw new Exception("Ilyen áruval nem foglalkozunk");
+        else throw new Exception("This product type is not our profile");
     }
 
     @Override
@@ -61,7 +61,7 @@ public class GroceryWarehouse implements Warehouse {
     public void addSupplier(Supplier s) throws Exception {
 
         if(!IsGrocerySupplier(s)) {
-            throw new Exception("Csak élelmiszer beszállítókkal dolgozunk");
+            throw new Exception("We only work with  GrocerySuppliers");
         }
         this.suppliers.addSupplier(s);
     }
@@ -100,10 +100,10 @@ public class GroceryWarehouse implements Warehouse {
     public void recordNewOrder(OrderImpl o) throws Exception {
 
         if(!isCustomerRegistered(o.getCustomer())){
-            throw new Exception("Nincs ilyen felhasználó nálunk");
+            throw new Exception("Customer not found");
         }
         if(!isProductsInWarehouse(o.getOrderedProds())){
-            throw new Exception("Ezek a termékek nem kaphatóak");
+            throw new Exception("Product not found");
         }
         this.orders.recordNewOrder(o);
     }

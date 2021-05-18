@@ -1,13 +1,10 @@
 package hu.komjati;
 
-import hu.komjati.customers.CustomerImpl;
 import hu.komjati.databases.memoryDBs.MemoryCustomerDB;
 import hu.komjati.databases.memoryDBs.MemoryOrderDB;
 import hu.komjati.databases.memoryDBs.MemoryProductDB;
 import hu.komjati.databases.memoryDBs.MemorySuppliersDB;
-import hu.komjati.orders.OrderImpl;
 import hu.komjati.products.Grocery;
-import hu.komjati.products.Product;
 import hu.komjati.products.Toy;
 import hu.komjati.suppliers.GrocerySupplier;
 import hu.komjati.suppliers.ToySupplier;
@@ -18,13 +15,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
 
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
 public class WarehouseTest {
@@ -62,7 +56,7 @@ public class WarehouseTest {
 
 
         Throwable exception = assertThrows(Exception.class, () -> groceryWH.addProduct(toy));
-        assertEquals("Ilyen áruval nem foglalkozunk", exception.getMessage());
+        assertEquals("This product type is not our profile", exception.getMessage());
 
     }
 
@@ -76,7 +70,7 @@ public class WarehouseTest {
 
 
         Throwable exception = assertThrows(Exception.class, () -> groceryWH.addSupplier(tsup));
-        assertEquals("Csak élelmiszer beszállítókkal dolgozunk", exception.getMessage());
+        assertEquals("We only work with  GrocerySuppliers", exception.getMessage());
 
     }
 
@@ -91,7 +85,7 @@ public class WarehouseTest {
 
 
         Throwable exception = assertThrows(Exception.class, () -> toyWH.addProduct(grocery));
-        assertEquals("Ilyen áruval nem foglalkozunk", exception.getMessage());
+        assertEquals("This product type is not our profile", exception.getMessage());
 
     }
 
@@ -104,7 +98,7 @@ public class WarehouseTest {
     public void addSupplierToToyWarehouseThrowException() {
 
         Throwable exception = assertThrows(Exception.class, () ->  toyWH.addSupplier(gsup));
-        assertEquals("Csak játék beszállítókkal dolgozunk", exception.getMessage());
+        assertEquals("We only work with  ToySuppliers", exception.getMessage());
 
     }
 

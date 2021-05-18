@@ -14,6 +14,6 @@ public interface Customer {
   void setAddress(String address);
   void orderProducts(Warehouse w) throws Exception;
   void addToCart(Product p);
-  List<Product> getProdutsInCart();
+  List<Product> getProductsInCart();
 
 }
