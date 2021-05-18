@@ -12,18 +12,16 @@ import hu.komjati.databases.memoryDBs.MemoryCustomerDB;
 import hu.komjati.databases.memoryDBs.MemoryOrderDB;
 import hu.komjati.databases.memoryDBs.MemoryProductDB;
 import hu.komjati.databases.memoryDBs.MemorySuppliersDB;
-import hu.komjati.orders.OrderImpl;
 import hu.komjati.products.Grocery;
 import hu.komjati.products.Product;
 import hu.komjati.products.Toy;
 import hu.komjati.warehouses.GroceryWarehouse;
 import hu.komjati.warehouses.ToyWarehouse;
 import hu.komjati.warehouses.Warehouse;
-import org.junit.jupiter.api.Order;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
