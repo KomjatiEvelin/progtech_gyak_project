@@ -7,7 +7,6 @@ import hu.komjati.suppliers.Supplier;
 import hu.komjati.suppliers.ToySupplier;
 import hu.komjati.warehouses.GroceryWarehouse;
 import hu.komjati.warehouses.ToyWarehouse;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
